@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/TicTacToe/Styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rammetto+One&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,100;1,300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>TicTacToe</title>
+
+</head>
+<body id="body">
+    <div id="loading-img">
+        <div class="center-body">
+            <div class="loader-ball-3">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            </div>
+    </div>
+    <h1 id="title">Tic Tac Toe</h1>
+    <div class = "restart">Restart</div>
+    <div id = "playersturn">
+    </div>
+    <div id = main>
+        <div class="first-row">
+            <div class="box" id="0" data-row= "0" data-column="0"></div>
+            <div class="box" id="3" data-row= "1" data-column="0"></div>
+            <div class="box" id="6" data-row= "2" data-column="0"></div>
+        </div>
+        <div class="second-column">
+            <div class="box" id="1" data-row= "0" data-column="1"></div>
+            <div class="box" id="4" data-row= "1" data-column="1"></div>
+            <div class="box" id="7" data-row= "2" data-column="1"></div>
+        </div>
+        <div class="third-column">
+            <div class="box" id="2" data-row= "0" data-column="2"></div>
+            <div class="box" id="5" data-row= "1" data-column="2"></div>
+            <div class="box" id="8" data-row= "2" data-column="2"></div>
+        </div>
+    </div>
+
+    
+
+    <div class="buttons">
+        
+        <div id="settings-container">
+            <div id="settings-popup">
+                <div id="cancel-btn" >&#x0078;</div>
+                <span id="setting-title">Settings</span>
+
+                <label class="switch">
+                    <span class="list">Screen</span>
+                    <input type="checkbox" id="checkbox">
+                    <span class="slider"></span>
+                </label> 
+            </div>
+
+
+            <button class="btn" id="settings">Settings</button>
+            <button class="btn" id="previous">Previous</button>
+            <button class="btn" id="next-setting">Next</button>
+    </div>
+</div>
+
+
+<script src="script.js"></script>
+
+
+</body>
+</html>
