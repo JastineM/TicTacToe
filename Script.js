@@ -4,13 +4,23 @@ const restartbutton = document.querySelector('.restart');
 const gamestate = document.getElementById('playersturn');
 const nextbutton = document.getElementById('next-setting');
 const previousbutton = document.getElementById('previous');
+const body = document.getElementById('body');
+const title = document.getElementById('title');
+const main = document.getElementById('main'); 
+const buttons=document.querySelector('.buttons');   
+const settings = document.getElementById('settings');
+const cancel = document.getElementById('cancel-btn');
 
 let savemoves= [];
 let options = [["","",""],["","",""],["","",""]];
 let currentplayer = "X";
 let nextplayer ="X";
 let ongoinggame = false;
-let spaces = [[null,null,null],[null,null,null],[null,null,null]];
+let savemovesproto = [];
+
+var screen = document.getElementById('checkbox');
+var loading = document.getElementById('loading-img');
+var settingsdisplay = document.getElementById('settings-popup');
 
 window.onload = function initializegame(){
     boxes.forEach(box => box.addEventListener('click',function(){
@@ -18,7 +28,6 @@ window.onload = function initializegame(){
       const boxindex = box.dataset.row + "," + box.dataset.column;
       const row = box.dataset.row;
       const column = box.dataset.column;
-      console.log(boxindex);
 
         options[row][column] = currentplayer;
         box.textContent = currentplayer;
@@ -29,8 +38,7 @@ window.onload = function initializegame(){
         const movesone = [moverow,movecolumn,movemarker];
 
         let testobject = Object.fromEntries(movesone);
-        console.log(testobject);
-
+        
         savemoves.push(testobject);
 
         changeplayers();
@@ -61,7 +69,7 @@ restartbutton.addEventListener('click',function(){
 //Change players
 function changeplayers(){
     currentplayer = (currentplayer == "X") ? "O":"X";
-    nextplayer = (currentplayer =="X") ? "O":"X";
+    nextplayer = (currentplayer == "X") ? "O":"X";
     gamestate.textContent = `${currentplayer}'s turn`;
 };
 
@@ -116,16 +124,11 @@ function checkwinner() {
       }
 
 //Next and previous buttons
-let savemovesproto = [];
-
 previousbutton.addEventListener('click',function(){
 let previousarray = savemoves.pop();
 const datarow = previousarray.row;
-console.log(datarow);
 const datacolumn = previousarray.column;
-console.log(datacolumn);
 const datamarker = previousarray.marker;
-console.log(datamarker);
 
 let box = document.querySelector(`[data-row="${datarow}"][data-column="${datacolumn}"]`);
 box.innerHTML = "";
@@ -133,7 +136,6 @@ box.innerHTML = "";
 options[datarow][datacolumn]="";
 
 savemovesproto.push(previousarray);
-console.log(savemovesproto);
 });
 
 nextbutton.addEventListener('click',function(){
@@ -141,26 +143,19 @@ nextbutton.addEventListener('click',function(){
   let next = savemovesproto;
   let firstarray = next.pop();
   const datarow = firstarray.row;
-  console.log(datarow);
   const datacolumn = firstarray.column;
-  console.log(datacolumn);
   const datamarker = firstarray.marker;
-  console.log(datamarker);
-    
+
   let box = document.querySelector(`[data-row="${datarow}"][data-column="${datacolumn}"]`);    
   box.innerHTML = `${datamarker}`;
 
   options[datarow][datacolumn]=`${datamarker}`;
   savemoves.push(firstarray);
-  console.log(savemoves);
+
 });
 
 
-//Page loading
-var loading = document.getElementById('loading-img');
-const title = document.getElementById('title');
-const main = document.getElementById('main'); 
-const buttons=document.querySelector('.buttons');     
+//Page loading  
 function init(){
     setTimeout(function() {
         title.style.display = "flex";
@@ -173,10 +168,6 @@ function init(){
 init();
 
 //Settings pop-up
- var settingsdisplay = document.getElementById('settings-popup');
- const settings = document.getElementById('settings');
- const cancel = document.getElementById('cancel-btn');
-
  settings.addEventListener('click', function() {
  settingsdisplay.classList.add('active');
 })
@@ -186,9 +177,6 @@ init();
 })
 
 //Screen
-var screen = document.getElementById('checkbox');
-const body = document.getElementById('body');
-
 screen.addEventListener('click',function(){
     if(screen.checked === true){
         body.style.backgroundColor = "white";
